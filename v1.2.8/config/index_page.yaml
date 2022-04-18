@@ -1,0 +1,32 @@
+- label: "'Numero de serie'"
+  parameter: DeviceID.SerialNumber
+  type: "'device-link'"
+  components:
+    - type: "'parameter'"
+- label: "'Modelo'"
+  parameter: DeviceID.ProductClass
+- label: "'Wan1 IPv4'"
+  parameter: InternetGatewayDevice.WANDevice.1.WANConnectionDevice.1.WANIPConnection.1.ExternalIPAddress
+- label: "'Wan2 IPv4'"
+  parameter: InternetGatewayDevice.WANDevice.1.WANConnectionDevice.2.WANIPConnection.1.ExternalIPAddress
+- label: "'Wan3 IPv4'"
+  parameter: InternetGatewayDevice.WANDevice.1.WANConnectionDevice.3.WANIPConnection.1.ExternalIPAddress
+- label: "'Wan4 IPv4'"
+  parameter: InternetGatewayDevice.WANDevice.1.WANConnectionDevice.4.WANIPConnection.1.ExternalIPAddress
+- label: "'SSID 2.4GHz'"
+  parameter: InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID
+- label: "'SSID 5GHz'"
+  parameter: InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.SSID
+- element: "'span.inform'"
+  label: "'Ultimo informe'"
+  parameter: DATE_STRING(Events.Inform)
+  type: "'container'"
+  components:
+    - type: "'parameter'"
+    - chart: "'online'"
+      type: "'overview-dot'"
+- label: "'Provisiones'"
+  parameter: Tags
+  type: "'tags'"
+  unsortable: true
+  writable: false

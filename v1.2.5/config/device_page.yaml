@@ -1,0 +1,71 @@
+- type: "'tags'"
+- type: "'ping'"
+- type: "'parameter-list'"
+  parameters:
+    - element: "'span.inform'"
+      label: "'Ultimo informe'"
+      parameter: DATE_STRING(Events.Inform)
+      type: "'container'"
+      components:
+        - type: "'parameter'"
+        - chart: "'online'"
+          type: "'overview-dot'"
+        - type: "'summon-button'"
+          parameters:
+            - InternetGatewayDevice.DeviceInfo.HardwareVersion
+            - InternetGatewayDevice.DeviceInfo.SoftwareVersion
+            - InternetGatewayDevice.WANDevice.*.WANConnectionDevice.*.WANIPConnection.*.MACAddress
+            - InternetGatewayDevice.WANDevice.*.WANConnectionDevice.*.WANIPConnection.*.ExternalIPAddress
+            - InternetGatewayDevice.LANDevice.*.WLANConfiguration.*.SSID
+            - InternetGatewayDevice.LANDevice.*.WLANConfiguration.*.KeyPassphrase
+            - InternetGatewayDevice.LANDevice.*.Hosts.Host.*.HostName
+            - InternetGatewayDevice.LANDevice.*.Hosts.Host.*.IPAddress
+            - InternetGatewayDevice.LANDevice.*.Hosts.Host.*.MACAddress
+    - label: "'Numero de serie'"
+      parameter: DeviceID.SerialNumber
+    - label: "'Modelo'"
+      parameter: DeviceID.ProductClass
+    - label: "'OUI'"
+      parameter: DeviceID.OUI
+    - label: "'Fabricante'"
+      parameter: DeviceID.Manufacturer
+    - label: "'Version de hardware'"
+      parameter: InternetGatewayDevice.DeviceInfo.HardwareVersion
+    - label: "'Version de software'"
+      parameter: InternetGatewayDevice.DeviceInfo.SoftwareVersion
+    - label: "'Dreccion MAC'"
+      parameter: InternetGatewayDevice.WANDevice.1.WANConnectionDevice.1.WANIPConnection.1.MACAddress
+    - label: "'Direccion IP'"
+      parameter: InternetGatewayDevice.WANDevice.1.WANConnectionDevice.1.WANIPConnection.1.ExternalIPAddress
+    - label: "'SSID 2.4 GHz'"
+      parameter: InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID
+    - label: "'SSID 5 GHz'"
+      parameter: InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.SSID
+- label: "'Equipos conectados'"
+  parameter: InternetGatewayDevice.LANDevice.1.Hosts.Host
+  type: "'parameter-table'"
+  childParameters:
+    - label: "'Nombre de host'"
+      parameter: HostName
+    - label: "'Direccion IP'"
+      parameter: IPAddress
+    - label: "'Direccion MAC'"
+      parameter: MACAddress
+- element: "'div'"
+  type: "'container'"
+  components:
+    - element: "'h3'"
+      type: "'container'"
+      components:
+        - "'Fallos de provision'"
+    - type: "'device-faults'"
+- element: "'div.container-full-width'"
+  type: "'container'"
+  components:
+    - element: "'h3'"
+      type: "'container'"
+      components:
+        - "'Todos los parametros'"
+    - limit: 500
+      type: "'all-parameters'"
+- type: "'device-actions'"
